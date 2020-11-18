@@ -6,7 +6,7 @@ defmodule Rollbax.Reporter.Standard do
 
   @behaviour Rollbax.Reporter
 
-  def handle_event(:error, {_pid, format, data}) do
+  def handle_event(error_level, {_pid, format, data}) when error_level in [:error, :error_msg] do
     handle_error_format(format, data)
   end
 
